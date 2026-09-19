@@ -1,0 +1,142 @@
+Automated Python tests
+test_admin_access_denied_at_both_entrypoints (test_app.AppTests.test_admin_access_denied_at_both_entrypoints) ... ok
+test_admin_all_editor_sections (test_app.AppTests.test_admin_all_editor_sections) ... ok
+test_admin_navigation_clears_old_edit_session (test_app.AppTests.test_admin_navigation_clears_old_edit_session) ... ok
+test_admin_review_action_is_audited (test_app.AppTests.test_admin_review_action_is_audited) ... ok
+test_backup_admin_only_and_sqlite_valid (test_app.AppTests.test_backup_admin_only_and_sqlite_valid) ... ok
+test_buyer_completion_notice_retries_independently (test_app.AppTests.test_buyer_completion_notice_retries_independently) ... Completion notice pending for buyer: RuntimeError
+ok
+test_caption_and_button_limits_all_default_pages (test_app.AppTests.test_caption_and_button_limits_all_default_pages) ... ok
+test_cart_removal_confirmation_is_required (test_app.AppTests.test_cart_removal_confirmation_is_required) ... ok
+test_catalog_product_cart_profile_navigation (test_app.AppTests.test_catalog_product_cart_profile_navigation) ... ok
+test_changed_terms_require_new_consent (test_app.AppTests.test_changed_terms_require_new_consent) ... ok
+test_checkout_requires_support (test_app.AppTests.test_checkout_requires_support) ... ok
+test_complete_manual_payment_approval_delivery (test_app.AppTests.test_complete_manual_payment_approval_delivery) ... ok
+test_crafted_order_callbacks_enforce_ownership (test_app.AppTests.test_crafted_order_callbacks_enforce_ownership) ... ok
+test_deleted_screen_recreated (test_app.AppTests.test_deleted_screen_recreated) ... ok
+test_delivery_timeout_never_autoretries (test_app.AppTests.test_delivery_timeout_never_autoretries) ... Delivery requires manual reconciliation for order 1
+ok
+test_direct_purchase_is_idempotent_at_confirmation (test_app.AppTests.test_direct_purchase_is_idempotent_at_confirmation) ... ok
+test_empty_checkout_does_not_leave_invalid_session (test_app.AppTests.test_empty_checkout_does_not_leave_invalid_session) ... ok
+test_empty_wallet_method_cannot_be_enabled_in_admin (test_app.AppTests.test_empty_wallet_method_cannot_be_enabled_in_admin) ... ok
+test_entity_text_price_photo_edit (test_app.AppTests.test_entity_text_price_photo_edit) ... ok
+test_equal_price_replacement_requires_new_confirmation (test_app.AppTests.test_equal_price_replacement_requires_new_confirmation) ... ok
+test_failed_edit_preserves_session_for_retry (test_app.AppTests.test_failed_edit_preserves_session_for_retry) ... ok
+test_find_order_and_later_queue (test_app.AppTests.test_find_order_and_later_queue) ... ok
+test_full_length_product_with_escaped_text_fits (test_app.AppTests.test_full_length_product_with_escaped_text_fits) ... ok
+test_gate_prevents_crypto_checkout_by_default (test_app.AppTests.test_gate_prevents_crypto_checkout_by_default) ... ok
+test_html_escaped_in_admin_owned_content (test_app.AppTests.test_html_escaped_in_admin_owned_content) ... ok
+test_labels_pages_and_support_edit (test_app.AppTests.test_labels_pages_and_support_edit) ... ok
+test_later_preserves_order_for_original_admin (test_app.AppTests.test_later_preserves_order_for_original_admin) ... ok
+test_legacy_reject_button_cannot_skip_comment (test_app.AppTests.test_legacy_reject_button_cannot_skip_comment) ... ok
+test_long_payment_wallet_and_description_fit (test_app.AppTests.test_long_payment_wallet_and_description_fit) ... ok
+test_maximum_cart_and_admin_order_pagination (test_app.AppTests.test_maximum_cart_and_admin_order_pagination) ... ok
+test_maximum_rejection_and_page_text_fit_caption (test_app.AppTests.test_maximum_rejection_and_page_text_fit_caption) ... ok
+test_method_description_limit_is_enforced (test_app.AppTests.test_method_description_limit_is_enforced) ... ok
+test_other_admin_cannot_send_claimed_order (test_app.AppTests.test_other_admin_cannot_send_claimed_order) ... ok
+test_page_length_limit_preserves_previous_copy (test_app.AppTests.test_page_length_limit_preserves_previous_copy) ... ok
+test_partial_admin_notification_retry_skips_already_sent (test_app.AppTests.test_partial_admin_notification_retry_skips_already_sent) ... Admin notice pending: RuntimeError
+ok
+test_photo_reset_and_reject_text_as_file_path (test_app.AppTests.test_photo_reset_and_reject_text_as_file_path) ... ok
+test_price_changed_requires_new_confirmation (test_app.AppTests.test_price_changed_requires_new_confirmation) ... ok
+test_proof_navigation_clears_input_session (test_app.AppTests.test_proof_navigation_clears_input_session) ... ok
+test_proof_rejects_text_and_album (test_app.AppTests.test_proof_rejects_text_and_album) ... ok
+test_queue_next_skips_other_admin_claim (test_app.AppTests.test_queue_next_skips_other_admin_claim) ... ok
+test_referral_is_registered_once_from_start (test_app.AppTests.test_referral_is_registered_once_from_start) ... ok
+test_reject_cancel_leaves_order_pending (test_app.AppTests.test_reject_cancel_leaves_order_pending) ... ok
+test_reject_comment_can_be_replaced_before_confirmation (test_app.AppTests.test_reject_comment_can_be_replaced_before_confirmation) ... ok
+test_reject_confirm_wrong_order_or_nonadmin_is_denied (test_app.AppTests.test_reject_confirm_wrong_order_or_nonadmin_is_denied) ... ok
+test_reject_draft_cannot_overwrite_other_admin_approval (test_app.AppTests.test_reject_draft_cannot_overwrite_other_admin_approval) ... ok
+test_reject_draft_survives_new_application_instance (test_app.AppTests.test_reject_draft_survives_new_application_instance) ... ok
+test_reject_input_requires_text_and_bounded_length (test_app.AppTests.test_reject_input_requires_text_and_bounded_length) ... ok
+test_rejection_notifies_buyer_with_support (test_app.AppTests.test_rejection_notifies_buyer_with_support) ... ok
+test_rejection_reason_notification_retry_preserves_comment (test_app.AppTests.test_rejection_reason_notification_retry_preserves_comment) ... Notification remains pending: RuntimeError
+ok
+test_rejection_reason_visible_in_notification_and_histories (test_app.AppTests.test_rejection_reason_visible_in_notification_and_histories) ... ok
+test_rejection_waits_for_reason_and_confirmation (test_app.AppTests.test_rejection_waits_for_reason_and_confirmation) ... ok
+test_release_allows_second_admin_to_fulfill (test_app.AppTests.test_release_allows_second_admin_to_fulfill) ... ok
+test_restart_preserves_proof_input_session (test_app.AppTests.test_restart_preserves_proof_input_session) ... ok
+test_shop_name_is_visible_on_home (test_app.AppTests.test_shop_name_is_visible_on_home) ... ok
+test_single_message_navigation (test_app.AppTests.test_single_message_navigation) ... ok
+test_stale_delivery_confirmation_cannot_send_twice (test_app.AppTests.test_stale_delivery_confirmation_cannot_send_twice) ... ok
+test_store_pause_and_missing_method_block_checkout (test_app.AppTests.test_store_pause_and_missing_method_block_checkout) ... ok
+test_unpaid_cancel_renders_final_status (test_app.AppTests.test_unpaid_cancel_renders_final_status) ... ok
+test_whitespace_name_cannot_be_saved_from_admin (test_app.AppTests.test_whitespace_name_cannot_be_saved_from_admin) ... ok
+test_banner_exists_and_is_jpeg (test_app.UtilityTests.test_banner_exists_and_is_jpeg) ... ok
+test_config_requires_credentials (test_app.UtilityTests.test_config_requires_credentials) ... ok
+test_invalid_health_port_rejected (test_app.UtilityTests.test_invalid_health_port_rejected) ... ok
+test_money_parsing_exact (test_app.UtilityTests.test_money_parsing_exact) ... ok
+test_railway_data_must_be_on_volume (test_app.UtilityTests.test_railway_data_must_be_on_volume) ... ok
+test_railway_requires_volume (test_app.UtilityTests.test_railway_requires_volume) ... ok
+test_support_validation (test_app.UtilityTests.test_support_validation) ... ok
+test_active_product_listing_requires_active_category (test_store.StoreTests.test_active_product_listing_requires_active_category) ... ok
+test_audit_preserves_untrusted_text_as_data (test_store.StoreTests.test_audit_preserves_untrusted_text_as_data) ... ok
+test_backup_contains_wal_data_and_is_independent (test_store.StoreTests.test_backup_contains_wal_data_and_is_independent) ... ok
+test_bool_and_injection_ids_rejected_without_mutation (test_store.StoreTests.test_bool_and_injection_ids_rejected_without_mutation) ... ok
+test_cancel_only_unpaid_and_terminal_orders_stay_terminal (test_store.StoreTests.test_cancel_only_unpaid_and_terminal_orders_stay_terminal) ... ok
+test_cart_add_set_remove_total_and_lifetime_count (test_store.StoreTests.test_cart_add_set_remove_total_and_lifetime_count) ... ok
+test_cart_checkout_snapshots_clears_and_has_exact_order_keys (test_store.StoreTests.test_cart_checkout_snapshots_clears_and_has_exact_order_keys) ... ok
+test_cart_twenty_line_limit_allows_existing_updates (test_store.StoreTests.test_cart_twenty_line_limit_allows_existing_updates) ... ok
+test_cart_users_are_isolated (test_store.StoreTests.test_cart_users_are_isolated) ... ok
+test_category_fk_filter_and_sort_order (test_store.StoreTests.test_category_fk_filter_and_sort_order) ... ok
+test_checkout_failure_rolls_back_inserted_order_and_cart (test_store.StoreTests.test_checkout_failure_rolls_back_inserted_order_and_cart) ... ok
+test_choose_method_rejects_inactive_empty_and_missing_wallet (test_store.StoreTests.test_choose_method_rejects_inactive_empty_and_missing_wallet) ... ok
+test_claim_release_and_reclaim_security (test_store.StoreTests.test_claim_release_and_reclaim_security) ... ok
+test_concurrent_cart_additions_do_not_lose_updates (test_store.StoreTests.test_concurrent_cart_additions_do_not_lose_updates) ... ok
+test_concurrent_checkout_clears_cart_exactly_once (test_store.StoreTests.test_concurrent_checkout_clears_cart_exactly_once) ... ok
+test_concurrent_claim_only_one_admin_wins (test_store.StoreTests.test_concurrent_claim_only_one_admin_wins) ... ok
+test_concurrent_delivery_start_only_one_worker_wins (test_store.StoreTests.test_concurrent_delivery_start_only_one_worker_wins) ... ok
+test_concurrent_direct_checkout_respects_unpaid_limit (test_store.StoreTests.test_concurrent_direct_checkout_respects_unpaid_limit) ... ok
+test_concurrent_proof_reuse_is_blocked_atomically (test_store.StoreTests.test_concurrent_proof_reuse_is_blocked_atomically) ... ok
+test_concurrent_review_only_one_admin_wins (test_store.StoreTests.test_concurrent_review_only_one_admin_wins) ... ok
+test_delivery_start_is_single_use_and_success_terminal (test_store.StoreTests.test_delivery_start_is_single_use_and_success_terminal) ... ok
+test_direct_checkout_leaves_cart_untouched (test_store.StoreTests.test_direct_checkout_leaves_cart_untouched) ... ok
+test_entity_and_column_injection_rejected (test_store.StoreTests.test_entity_and_column_injection_rejected) ... ok
+test_entity_creation_field_shapes_and_inactive_defaults (test_store.StoreTests.test_entity_creation_field_shapes_and_inactive_defaults) ... ok
+test_entity_text_length_boundaries (test_store.StoreTests.test_entity_text_length_boundaries) ... ok
+test_inactive_products_and_categories_block_add_and_checkout (test_store.StoreTests.test_inactive_products_and_categories_block_add_and_checkout) ... ok
+test_large_totals_use_integer_cents (test_store.StoreTests.test_large_totals_use_integer_cents) ... ok
+test_method_snapshot_is_immutable_and_can_change_before_proof (test_store.StoreTests.test_method_snapshot_is_immutable_and_can_change_before_proof) ... ok
+test_notification_state_filters_and_independent_flags (test_store.StoreTests.test_notification_state_filters_and_independent_flags) ... ok
+test_order_lookup_and_all_customer_mutations_enforce_owner (test_store.StoreTests.test_order_lookup_and_all_customer_mutations_enforce_owner) ... ok
+test_orders_sorting_pending_statuses_and_owner_filter (test_store.StoreTests.test_orders_sorting_pending_statuses_and_owner_filter) ... ok
+test_persistence_across_connections (test_store.StoreTests.test_persistence_across_connections) ... ok
+test_price_active_sort_and_asset_validation (test_store.StoreTests.test_price_active_sort_and_asset_validation) ... ok
+test_proof_state_machine_requires_method_and_valid_identifiers (test_store.StoreTests.test_proof_state_machine_requires_method_and_valid_identifiers) ... ok
+test_quantity_bounds_and_cumulative_limit_rollback (test_store.StoreTests.test_quantity_bounds_and_cumulative_limit_rollback) ... ok
+test_queue_requires_claim_and_valid_delivery_coordinates (test_store.StoreTests.test_queue_requires_claim_and_valid_delivery_coordinates) ... ok
+test_recovery_only_changes_inflight_deliveries (test_store.StoreTests.test_recovery_only_changes_inflight_deliveries) ... ok
+test_referrer_is_immutable_and_invalid_referrers_ignored (test_store.StoreTests.test_referrer_is_immutable_and_invalid_referrers_ignored) ... ok
+test_registration_referral_and_profile (test_store.StoreTests.test_registration_referral_and_profile) ... ok
+test_rejection_invalid_reason_rolls_back (test_store.StoreTests.test_rejection_invalid_reason_rolls_back) ... ok
+test_rejection_race_keeps_winning_comment (test_store.StoreTests.test_rejection_race_keeps_winning_comment) ... ok
+test_rejection_reason_is_persisted_with_terminal_state (test_store.StoreTests.test_rejection_reason_is_persisted_with_terminal_state) ... ok
+test_returned_snapshots_cannot_mutate_persisted_state (test_store.StoreTests.test_returned_snapshots_cannot_mutate_persisted_state) ... ok
+test_reused_proof_blocked_across_users_and_after_rejection (test_store.StoreTests.test_reused_proof_blocked_across_users_and_after_rejection) ... ok
+test_review_compare_and_swap_and_strict_boolean (test_store.StoreTests.test_review_compare_and_swap_and_strict_boolean) ... ok
+test_schema_v1_migrates_without_losing_orders (test_store.StoreTests.test_schema_v1_migrates_without_losing_orders) ... ok
+test_seed_is_safe_and_not_duplicated_on_reopen (test_store.StoreTests.test_seed_is_safe_and_not_duplicated_on_reopen) ... ok
+test_sessions_roundtrip_replace_clear_and_isolation (test_store.StoreTests.test_sessions_roundtrip_replace_clear_and_isolation) ... ok
+test_settings_defaults_upsert_and_sql_injection (test_store.StoreTests.test_settings_defaults_upsert_and_sql_injection) ... ok
+test_sqlite_pragmas_and_foreign_keys (test_store.StoreTests.test_sqlite_pragmas_and_foreign_keys) ... ok
+test_stats_count_delivered_revenue_only (test_store.StoreTests.test_stats_count_delivered_revenue_only) ... ok
+test_uncertain_delivery_is_not_automatically_retried (test_store.StoreTests.test_uncertain_delivery_is_not_automatically_retried) ... ok
+test_uncertain_resolution_allows_explicit_requeue_with_new_claim (test_store.StoreTests.test_uncertain_resolution_allows_explicit_requeue_with_new_claim) ... ok
+test_unpaid_limit_includes_awaiting_proof_and_preserves_cart (test_store.StoreTests.test_unpaid_limit_includes_awaiting_proof_and_preserves_cart) ... ok
+
+----------------------------------------------------------------------
+Ran 120 tests in 4.438s
+
+OK
+
+Python lint
+All checks passed!
+
+Dependency compatibility
+No broken requirements found.
+
+Python syntax and deployment configuration
+All Python parsed; Railway JSON valid; one replica; healthcheck; crypto disabled by default; JPEG present.
+
+Preview JavaScript checks
+21 preview screens and quantity/cart interactions passed in a simulated DOM. Not a browser rendering test.
