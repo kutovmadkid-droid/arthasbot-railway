@@ -398,8 +398,7 @@ class Shop:
         rows += self.rows(("active", f"a:toggle:{kind}:{eid}"), ("back", f"a:list:{kind}:0")) + [
             self.admin_row()
         ]
-        desc = short(item["description"], 260)
-        extra = f"<b>#{eid} · {esc(item['name'])}</b> · {'ON' if item['active'] else 'OFF'}\n{esc(desc)}"
+        extra = f"<b>#{eid} · {item['name']}</b> · {'ON' if item['active'] else 'OFF'}\n{item['description']}"
         if kind == "products":
             extra += f"\nЦена: {money(item['price_cents'])} USD · Категория #{item['category_id']}"
         if kind == "methods":
