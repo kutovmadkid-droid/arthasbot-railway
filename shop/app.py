@@ -70,8 +70,9 @@ class Shop:
     def upload(self, photo):
         return FSInputFile(photo) if photo == str(ROOT / "assets" / "cover.jpg") else photo
 
-    async def screen(self, uid, page, extra="", rows=None, photo="", text=None):
-        caption = esc(self.page(page) if text is None else text)
+    async def screen(self, uid, page, extra="", rows=None, photo="", text=None, raw_text=False):
+        base = self.page(page) if text is None else text
+        caption = base if raw_text else esc(base)
         if extra:
             caption += "\n\n" + extra
         # Keep within 1024 UTF-16 caption units even with user-entered astral characters.
@@ -190,8 +191,9 @@ class Shop:
             rows,
             cat["photo"],
             cat["name"] + "\n\n" + cat["description"],
+            raw_text=True,
         )
-
+        
     async def product(self, uid, pid, qty):
         p = self.s._product(pid)
         qty = max(1, min(99, qty))
@@ -212,6 +214,7 @@ class Shop:
             rows,
             p["photo"],
             p["name"] + "\n\n" + p["description"],
+            raw_text=True,
         )
 
     async def cart(self, uid, page=0):
