@@ -8,6 +8,8 @@ import threading
 from contextlib import contextmanager
 from datetime import datetime, timezone
 
+from .content import caption_units
+
 _FIELDS = {
     "categories": {"name", "description", "photo", "active", "sort_order"},
     "products": {"category_id", "name", "description", "photo", "price_cents", "active", "sort_order"},
@@ -245,7 +247,12 @@ class Store:
         if not isinstance(field, str) or field not in _FIELDS[kind]:
             raise ValueError("Недопустимое поле")
         if field in _LENGTHS:
-            value = _text(value, "текст", _LENGTHS[field])
+            if field in ("name", "description"):
+                value = _text(value, "текст")
+                if caption_units(value) > _LENGTHS[field]:
+                    raise ValueError(f"Слишком длинное значение: текст, максимум {_LENGTHS[field]}")
+            else:
+                value = _text(value, "текст", _LENGTHS[field])
         elif field == "active":
             value = int(value) if isinstance(value, bool) else _integer(value, "активность", 0, 1)
         elif field == "price_cents":
