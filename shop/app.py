@@ -56,7 +56,11 @@ class Shop:
 
     def page(self, key):
         title, text = PAGES.get(key, PAGES["home"])
-        return self.s.get("page:" + key + ":text", title + "\n\n" + text)
+        stored = self.s.get("page:" + key + ":text", "")
+        # Сохранённый администратором текст приходит уже как HTML (msg.html_text),
+        # поэтому доверяем ему как есть — это единственное место, где premium-эмодзи
+        # и другое форматирование в текстах экранов остаются целыми, не заэкранированными.
+        return stored if stored else esc(title + "\n\n" + text)
 
     def photo(self, key, override=""):
         # Only Telegram file IDs set by uploaded photos; never arbitrary local paths/URLs.
@@ -71,8 +75,12 @@ class Shop:
         return FSInputFile(photo) if photo == str(ROOT / "assets" / "cover.jpg") else photo
 
     async def screen(self, uid, page, extra="", rows=None, photo="", text=None, raw_text=False):
-        base = self.page(page) if text is None else text
-        caption = base if raw_text else esc(base)
+        if text is None:
+            # self.page() сама решает: либо это безопасный HTML (сохранён через
+            # msg.html_text), либо заэкранированный дефолт — здесь трогать не нужно.
+            caption = self.page(page)
+        else:
+            caption = text if raw_text else esc(text)
         if extra:
             caption += "\n\n" + extra
         # Keep within 1024 UTF-16 caption units even with user-entered astral characters.
@@ -115,7 +123,7 @@ class Shop:
         self.s.set(f"screen:{uid}", sent.message_id)
 
     async def notice(self, uid, page, extra="", rows=None):
-        caption = esc(self.page(page)) + ("\n\n" + extra if extra else "")
+        caption = self.page(page) + ("\n\n" + extra if extra else "")
         if caption_units(caption) > 1000:
             caption = esc(PAGES[page][0]) + "\n\n" + extra
         source = self.photo(page)
@@ -158,7 +166,11 @@ class Shop:
         if uid in self.config.admins:
             rows.append(self.admin_row())
         await self.screen(
-            uid, "home", rows=rows, text=self.s.get("shop_name", "AURORA") + "\n\n" + self.page("home")
+            uid,
+            "home",
+            rows=rows,
+            text=self.s.get("shop_name", "AURORA") + "\n\n" + self.page("home"),
+            raw_text=True,
         )
 
     async def catalog(self, uid, page=0):
@@ -876,7 +888,8 @@ class Shop:
             self.s.audit(uid, "edit:" + field, data["kind"], data["id"])
         elif scope == "page":
             # Dynamic pages need space for order IDs, totals and wallet addresses.
-            if field == "text" and (not value.strip() or len(value.encode("utf-16-le")) // 2 > 320):
+            # caption_units считает видимый текст, а не длину HTML-тегов вроде tg-emoji.
+            if field == "text" and (not value.strip() or caption_units(value) > 320):
                 raise ValueError("Текст экрана: 1–320 символов (эмодзи считаются за два)")
             self.s.set(f"page:{data['key']}:{field}", value)
             self.s.audit(uid, "page:" + field, "pages", data["key"])
@@ -888,7 +901,7 @@ class Shop:
         elif scope == "setting":
             if data["key"] == "support":
                 value = validate_support(value)
-            elif not value.strip() or len(value) > 60:
+            elif not value.strip() or caption_units(value) > 60:
                 raise ValueError("Название: 1–60 символов")
             self.s.set(data["key"], value.strip())
             self.s.audit(uid, "setting", "settings", data["key"])
@@ -958,9 +971,19 @@ class Shop:
             else:
                 if not msg.text:
                     raise ValueError("Отправьте текст")
+                # Поля, где сохраняем форматирование (в т.ч. premium-эмодзи) как HTML:
+                # название/описание товара или категории, текст экрана, название магазина.
+                # "support" сюда не входит — это юзернейм, из него строится ссылка t.me/...
+                keep_html = data["field"] in ("name", "description") or (
+                    data["scope"] == "page" and data["field"] == "text"
+                ) or (
+                    data["scope"] == "setting"
+                    and data["field"] == "text"
+                    and data.get("key") == "shop_name"
+                )
                 if text == "/empty" and data["field"] == "description":
                     value = ""
-                elif data["field"] in ("name", "description"):
+                elif keep_html:
                     value = msg.html_text
                 else:
                     value = text
