@@ -863,7 +863,8 @@ class Shop:
                 raise ValueError("Это поле не может быть пустым")
             if field in ("name", "description", "wallet", "network"):
                 limit = {"name": 60, "description": 550, "wallet": 250, "network": 50}[field]
-                if len(value.encode("utf-16-le")) // 2 > limit:
+                length = caption_units(value) if field in ("name", "description") else len(value.encode("utf-16-le")) // 2
+                if length > limit:
                     raise ValueError(
                         f"Поле слишком длинное: максимум {limit} символов; эмодзи считаются за два"
                     )
@@ -955,7 +956,12 @@ class Shop:
             else:
                 if not msg.text:
                     raise ValueError("Отправьте текст")
-                value = "" if text == "/empty" and data["field"] == "description" else text
+                if text == "/empty" and data["field"] == "description":
+                    value = ""
+                elif data["field"] in ("name", "description"):
+                    value = msg.html_text
+                else:
+                    value = text
             await self.save_edit(uid, data, value)
         elif mode in ("reject_reason", "reject_confirm"):
             oid = data["id"]
